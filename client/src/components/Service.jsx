@@ -1,23 +1,25 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-class Service extends React.Component{
+class Service extends React.Component {
 
-    componentDidMount()
-    {
-       // this.props.fetchServicesAndProviders();
+    componentDidMount() {
+        // this.props.fetchServicesAndProviders();
     }
-    renderList(){
-        
-        const {services}=this.props;
-        if(!services){
+    onServiceClick=(e,id)=>{
+        e.preventDefault();
+        this.props.onServiceClick(id);
+    }
+    renderList() {
+
+        const { services } = this.props;
+        if (!services) {
             return null;
         }
-        debugger;
-        console.log('service',services)
-        return services.map(service=>{
-            return(
-                <div className="item" key={service.id}>
+        console.log('service', services)
+        return services.map(service => {
+            return (
+                <div className={this.props.serviceId==service.id ?"item activeDiv": "item clickableItem"} onClick={(e)=>this.onServiceClick(e,service.id) } key={service.id}>
                     <div className="content">
                         <div className="description">
                             <h2>{service.id}</h2>
@@ -27,15 +29,15 @@ class Service extends React.Component{
             )
         })
     }
-    render(){
+    render() {
         return (<div className="ui relaxed divided list">
             <h2>Service</h2>
-        {this.renderList()}
+            {this.renderList()}
         </div>)
     }
 };
 
-const mapStateToProps=(state)=>{
-    return {services:state.services}
+const mapStateToProps = (state) => {
+    return { services: state.services }
 }
 export default connect(mapStateToProps)(Service);

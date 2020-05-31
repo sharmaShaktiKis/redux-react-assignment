@@ -27,8 +27,6 @@ let response = {
     token: '',
     message: null
 };
-//var imageDir = path.join(__dirname, '/docs/');
-
 
 
 app.use(function (req, res, next) {

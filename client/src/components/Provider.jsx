@@ -12,7 +12,7 @@ class Provider extends React.Component {
             return null;
         }
         console.log(providers)
-        return this.props.providers.map(provider => {
+        return providers.map(provider => {
             var image = provider.attributes["profile-image"];
             return (
 
@@ -29,13 +29,17 @@ class Provider extends React.Component {
                                 </div>
 
                             </div>
+
+                            <div class="ui bulleted list">
+  
+  
+  
                            {provider.attributes["subspecialties"].map(subs => {
                                return (
-                                <div className="meta">
-                                 {subs}
-                                <br/>
-                           </div> )})
+                                <div className="item"> {subs}</div>
+                         )})
                            }
+                           </div>
                             
                            
                         </div>
@@ -55,7 +59,7 @@ class Provider extends React.Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return { providers: state.providers.find((prov) => (prov.service === ownProps.service || ownProps.service === "")) };
+    return { providers: state.providers };
 }
 //export default connect(mapStateToProps,{fetchUser})(UserHeader);
 export default connect(mapStateToProps)(Provider);

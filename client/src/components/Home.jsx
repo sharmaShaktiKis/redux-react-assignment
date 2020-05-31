@@ -6,9 +6,21 @@ import {fetchServicesAndProviders} from '../actions'
 
 class Home extends React.Component{
 
+    constructor(){
+        super();
+        this.state={
+            serviceId:""
+        }
+    }
+
     componentDidMount()
     {
         this.props.fetchServicesAndProviders();
+    }
+
+    onServiceClick=(service)=>{
+        debugger;
+      this.setState({serviceId:service})
     }
     
     render(){
@@ -23,7 +35,7 @@ class Home extends React.Component{
         return (
         <div className="row">
 
-        <div className="col-6"><Service ></Service></div>
+        <div className="col-6"><Service  onServiceClick={this.onServiceClick} serviceId={this.state.serviceId}></Service></div>
         <div className="col-6"><Provider></Provider></div>
       </div>)
     }
