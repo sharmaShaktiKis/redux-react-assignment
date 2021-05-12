@@ -20,7 +20,7 @@
     "google-spreadsheet": "^3.0.11",
     "http": "0.0.1-security",
     "json-parser": "^3.1.2",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "request": "^2.88.2"
   },
   "devDependencies": {
